@@ -1,0 +1,10 @@
+{
+  "author": "yakuthemes",
+  "license": "MIT",
+  "scripts": {
+    "html": "twig --source src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
+  },
+  "devDependencies": {
+    "twig-html": "^1.0.1"
+  }
+}
