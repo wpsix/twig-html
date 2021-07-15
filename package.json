@@ -1,15 +1,17 @@
 {
   "name": "twig-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "author": "yakuthemes",
   "main": "index.js",
+  "bin": {
+    "twig": "./index.js"
+  },
   "license": "MIT",
   "devDependencies": {
     "commander": "^8.0.0",
     "glob": "^7.1.7",
     "js-beautify": "^1.14.0",
     "path": "^0.12.7",
-    "rcs-core": "^3.6.5",
-    "rename-css-selectors": "^4.0.0",
     "twig": "^1.15.4"
   }
 }

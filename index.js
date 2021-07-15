@@ -6,8 +6,6 @@ const twig = require('twig').twig
 const glob = require('glob')
 const path = require('path')
 const beautify = require('js-beautify').html
-const rcsCore = require('rcs-core')
-const rcs = require('rename-css-selectors')
 
 program
   .version('1.0.0')
@@ -33,15 +31,6 @@ program
     const option = {
       ignore: ['node_modules/**']
     }
-
-    // dir.data.forEach(source => {
-    //   data = JSON.parse(fs.readFileSync(source))
-    //   console.log(data)
-    // })
-
-    // rcsCore.baseLibrary.setExclude(/<%=[\s\S]+%>/);
-
-    // rcs.process.auto(['dist/assets/css/theme.css', 'dist/index.html']);
 
     glob(dir.source, option, (er, files) => {
       files.forEach(source => {
