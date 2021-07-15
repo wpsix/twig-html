@@ -2,7 +2,7 @@
   "author": "yakuthemes",
   "license": "MIT",
   "scripts": {
-    "html": "twig src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
+    "html": "twig -s src/views/*.html -d src/data/*.json -o dist/"
   },
   "devDependencies": {
     "twig-html": "^1.0.1"
