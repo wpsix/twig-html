@@ -6,54 +6,48 @@ const twig = require('twig').twig
 const glob = require('glob')
 const path = require('path')
 const beautify = require('js-beautify').html
+const pkgJSON = require('./package.json')
 
-program
-  .version('1.0.0')
-  .usage('[directory] --data [directory] --output [directory] --root [directory]')
-  .description('Twig bundler for yakuthemes products.')
-  .option(
-    '-s, --source <directory>',
-    'define the output directory'
-  )
-  .option(
-    '-d, --data <path>',
-    'define the data path [optional]'
-  )
-  .option(
-    '-o, --output <directory>',
-    'define the output directory'
-  )
-  .option(
-    '-r, --root <path>',
-    'define the root path [optional]'
-  )
-  .action(dir => {
-    glob(dir.input, (er, files) => {
-      files.forEach(input => {
-        const file = path.parse(input).base
-        const output = path.normalize(dir.output + file)
-        const dataSource = glob.sync(dir.data, [option])
+const render = (dir) => {
+  const option = {
+    ignore: ['node_modules/**']
+  }
 
-        const obj = {}
-        let data = ''
-        let parsed = ''
+  glob(dir.source, option, (er, files) => {
+    files.forEach(source => {
+      const file = path.parse(source).base
+      const output = path.normalize(dir.output + file)
+      const dataSource = glob.sync(dir.data, [option])
 
-        dataSource.forEach(file => {
-          parsed = JSON.parse(fs.readFileSync(file))
-          data = Object.assign(obj, parsed)
-        })
+      const obj = {}
+      let data = ''
+      let parsed = ''
 
-        twig({
-          path: input,
-          load: template => {
-            const content = template.render(data)
+      dataSource.forEach(file => {
+        parsed = JSON.parse(fs.readFileSync(file))
+        data = Object.assign(obj, parsed)
+      })
 
-            fs.writeFileSync(output, beautify(content, { extra_liners: ' ', preserve_newlines: false }))
+      twig({
+        path: source,
+        load: template => {
+          const content = template.render(data)
 
-            console.log('Created', output);
-          }
-        })
+          fs.writeFileSync(output, beautify(content, { extra_liners: ' ', preserve_newlines: false }))
+
+          console.log('created', output);
+        }
       })
     })
   })
-  .parse()
+}
+
+program
+  .version(pkgJSON.version)
+  .description(pkgJSON.description)
+  .usage('--source [directory] --data [directory] --output [directory]')
+  .option('-s, --source <directory>', 'define the data path [optional]')
+  .option('-d, --data <path>', 'define the data path [optional]')
+  .option('-o, --output <directory>', 'define the output directory')
+  .action(render)
+  .parse(process.argv)
