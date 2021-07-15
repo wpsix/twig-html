@@ -1,6 +1,6 @@
 {
   "name": "twig-html",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "yakuthemes",
   "main": "index.js",
   "bin": {
