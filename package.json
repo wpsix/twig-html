@@ -1,10 +1,10 @@
 {
   "name": "twig-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "yakuthemes",
   "main": "index.js",
   "bin": {
-    "twig": "./index.js"
+    "twig": "index.js"
   },
   "license": "MIT",
   "devDependencies": {
