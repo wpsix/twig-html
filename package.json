@@ -1,16 +1,16 @@
 {
   "name": "twig-html",
   "description": "A package to convert twig.js files to html with beautifier and json data.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "yakuthemes",
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "twig": "./index.js"
+    "twig": "index.js"
   },
   "repository": "https://github.com/yakuthemes/twig-html.git",
   "bugs": "https://github.com/yakuthemes/twig-html/issues",
-  "devDependencies": {
+  "dependencies": {
     "commander": "^8.0.0",
     "glob": "^7.1.7",
     "js-beautify": "^1.14.0",
