@@ -1,7 +1,7 @@
 {
   "name": "twig-html",
   "description": "A package to convert twig.js files to html with beautifier and json data.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "yakuthemes",
   "license": "MIT",
   "main": "index.js",

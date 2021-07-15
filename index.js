@@ -9,7 +9,7 @@ const beautify = require('js-beautify').html
 
 program
   .version('1.0.0')
-  .usage('--source [directory] --data [directory] --output [directory] --root [directory]')
+  .usage('[directory] --data [directory] --output [directory] --root [directory]')
   .description('Twig bundler for yakuthemes products.')
   .option(
     '-s, --source <directory>',
@@ -28,13 +28,9 @@ program
     'define the root path [optional]'
   )
   .action(dir => {
-    const option = {
-      ignore: ['node_modules/**']
-    }
-
-    glob(dir.source, option, (er, files) => {
-      files.forEach(source => {
-        const file = path.parse(source).base
+    glob(dir.input, (er, files) => {
+      files.forEach(input => {
+        const file = path.parse(input).base
         const output = path.normalize(dir.output + file)
         const dataSource = glob.sync(dir.data, [option])
 
@@ -48,11 +44,13 @@ program
         })
 
         twig({
-          path: source,
+          path: input,
           load: template => {
             const content = template.render(data)
 
             fs.writeFileSync(output, beautify(content, { extra_liners: ' ', preserve_newlines: false }))
+
+            console.log('Created', output);
           }
         })
       })

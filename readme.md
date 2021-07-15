@@ -14,7 +14,7 @@ Add script to your package.json like this:
 
 ```text
 "scripts": {
-  "html": "twig --source src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
+  "html": "twig src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
 }
 ```
 
