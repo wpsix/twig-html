@@ -9,11 +9,15 @@ const beautify = require('js-beautify').html
 
 program
   .version('1.0.0')
-  .usage('[directory] --output [directory] --root [directory]')
+  .usage('--source [directory] --data [directory] --output [directory] --root [directory]')
   .description('Twig bundler for yakuthemes products.')
   .option(
     '-s, --source <directory>',
     'define the output directory'
+  )
+  .option(
+    '-d, --data <path>',
+    'define the data path [optional]'
   )
   .option(
     '-o, --output <directory>',
@@ -22,10 +26,6 @@ program
   .option(
     '-r, --root <path>',
     'define the root path [optional]'
-  )
-  .option(
-    '-d, --data <path>',
-    'define the data path [optional]'
   )
   .action(dir => {
     const option = {

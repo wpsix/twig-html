@@ -10,12 +10,12 @@ Install the package.
 npm i twig-html --save-dev
 ```
 
-Add scripts to you package.json like this:
+Add script to your package.json like this:
 
 ```text
-  "scripts": {
-    "html": "twig --source src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
-  }
+"scripts": {
+  "html": "twig --source src/views/*.html --data src/data/*.json --root src/views/ --output dist/"
+}
 ```
 
 Run the script.
